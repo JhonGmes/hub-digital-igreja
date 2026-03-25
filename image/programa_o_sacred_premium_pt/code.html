@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .serif {
+            font-family: 'Noto Serif', serif;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#474836",
+              "secondary-container": "#dbe4ec",
+              "inverse-primary": "#e9c349",
+              "surface": "#fbf9f8",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-high": "#eae8e7",
+              "on-surface": "#1b1c1c",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e4e2e2",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#3f484e",
+              "on-primary": "#ffffff",
+              "secondary": "#576066",
+              "on-primary-fixed": "#241a00",
+              "primary-fixed": "#ffe088",
+              "primary-container": "#d4af37",
+              "outline-variant": "#d0c5af",
+              "tertiary-container": "#b4b49d",
+              "surface-container-highest": "#e4e2e2",
+              "background": "#fbf9f8",
+              "on-secondary": "#ffffff",
+              "surface-container": "#efeded",
+              "surface-tint": "#735c00",
+              "on-surface-variant": "#4d4635",
+              "surface-dim": "#dbd9d9",
+              "inverse-surface": "#303030",
+              "on-primary-fixed-variant": "#574500",
+              "surface-container-low": "#f5f3f3",
+              "tertiary": "#5e604d",
+              "on-secondary-container": "#5d666c",
+              "on-tertiary-fixed": "#1b1d0e",
+              "inverse-on-surface": "#f2f0f0",
+              "secondary-fixed": "#dbe4ec",
+              "on-background": "#1b1c1c",
+              "surface-bright": "#fbf9f8",
+              "on-secondary-fixed": "#141d22",
+              "on-tertiary-container": "#454634",
+              "secondary-fixed-dim": "#bfc8cf",
+              "on-primary-container": "#554300",
+              "tertiary-fixed": "#e4e4cc",
+              "primary": "#735c00",
+              "tertiary-fixed-dim": "#c8c8b0",
+              "outline": "#7f7663",
+              "primary-fixed-dim": "#e9c349"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(77,70,53,0.05)]">
+<div class="flex justify-between items-center px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif italic text-zinc-900 dark:text-zinc-50">Sacred Editorial</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] hover:text-[#D4AF37] transition-colors duration-300" href="#">Ensaios</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] hover:text-[#D4AF37] transition-colors duration-300" href="#">Arquivos</a>
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1 font-['Manrope']" href="#">Meditations</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] hover:text-[#D4AF37] transition-colors duration-300" href="#">Santuário</a>
+</div>
+<div class="flex items-center space-x-6 text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors">language</span>
+<button class="md:hidden material-symbols-outlined">menu</button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-6xl mx-auto">
+<!-- Header Section -->
+<header class="mb-24 text-center">
+<span class="font-label text-xs tracking-[0.3em] uppercase text-primary mb-4 block">Rituais &amp; Encontros</span>
+<h1 class="serif text-5xl md:text-7xl font-light text-on-surface tracking-tight mb-6">Programação Semanal</h1>
+<p class="font-body text-lg text-secondary max-w-2xl mx-auto leading-relaxed">Uma sequência curada de práticas contemplativas desenhadas para alinhar seu ritmo interno com as estações do Sacred Editorial.</p>
+</header>
+<!-- Schedule List -->
+<div class="space-y-32">
+<!-- Monday -->
+<section class="group">
+<div class="flex flex-col md:flex-row gap-12 items-start">
+<div class="w-full md:w-1/4 sticky top-40">
+<h2 class="serif text-4xl italic text-on-surface mb-2">Segunda-feira</h2>
+<p class="font-label text-sm tracking-widest uppercase text-outline">Dia de Iniciação</p>
+<div class="mt-8 overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low">
+<img alt="Morning mist over a still lake" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Soft morning mist rising over a perfectly still lake at dawn with cool blue and grey tones and ethereal light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBryZsHZTnlGYutShpJO2cWZIZb1eP9kavrMVa-4zBiczybcDZpU1a52O_DwpV_0ik7wHt6lgwWBu8_rdBUsJpu-AcEfv5YXv-czlDYOCcBV9R93wzc1QUteYR8kQlwMeDUrdWsgBV4ry_mm-Sy_8R4S6pJ2U_vVumMmwk2g3p7slQHA-4i2K51lxJpFjtYW-OVoSab2k2k2YnTEu-1_L_MX0LCfHFobj2e_4BjXT_XaU0ilbTZ0-pXHpEHw9175SLK8s1u0_BUPOuq"/>
+</div>
+</div>
+<div class="w-full md:w-3/4 space-y-6">
+<!-- Event Card 1 -->
+<div class="bg-surface-container-lowest p-8 md:p-10 rounded-2xl hover:bg-white transition-all duration-500 flex flex-col md:flex-row justify-between items-center gap-8 group/card">
+<div class="flex-1 space-y-3 text-center md:text-left">
+<span class="font-label text-xs text-primary-container font-bold tracking-widest">07:00 — 08:30</span>
+<h3 class="serif text-2xl text-on-surface">Abertura Silenciosa</h3>
+<p class="text-secondary font-light">Uma meditação coletiva focada em definir intenções para o próximo ciclo criativo.</p>
+<div class="flex items-center justify-center md:justify-start gap-4 pt-4 text-xs text-outline uppercase tracking-widest">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> O Grande Salão</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">group</span> Guided</span>
+</div>
+</div>
+<button class="px-8 py-3 bg-gradient-to-tr from-primary to-primary-container text-white rounded-full font-label text-sm tracking-widest uppercase hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                Agendar
+                            </button>
+</div>
+<!-- Event Card 2 -->
+<div class="bg-surface-container-low p-8 md:p-10 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-8 border-l-4 border-primary-container/20">
+<div class="flex-1 space-y-3 text-center md:text-left">
+<span class="font-label text-xs text-secondary font-bold tracking-widest">14:00 — 16:00</span>
+<h3 class="serif text-2xl text-on-surface">Revisão de Manuscritos</h3>
+<p class="text-secondary font-light">Sessões individuais para edição de desenvolvimento e refinamento estilístico.</p>
+<div class="flex items-center justify-center md:justify-start gap-4 pt-4 text-xs text-outline uppercase tracking-widest">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">laptop_mac</span> Santuário Digital</span>
+</div>
+</div>
+<button class="px-8 py-3 border border-outline-variant text-on-surface-variant rounded-full font-label text-sm tracking-widest uppercase hover:bg-surface-container-high transition-colors">Lista de Espera</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Wednesday -->
+<section class="group">
+<div class="flex flex-col md:flex-row-reverse gap-12 items-start">
+<div class="w-full md:w-1/4 sticky top-40 md:text-right">
+<h2 class="serif text-4xl italic text-on-surface mb-2">Quarta-feira</h2>
+<p class="font-label text-sm tracking-widest uppercase text-outline">Dia de Profundidade</p>
+<div class="mt-8 overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low">
+<img alt="Close up of incense smoke" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Intricate swirls of white incense smoke against a dark moody background with soft golden sunlight filtering through" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf-jePpwqNHRvtk224NsLCBqKQXnruKI50QOPPqXN9FmjEf8QD6WZ6QOqpd1YU2Y9_oAlgfEX8tVWX5nIa8z3Tg8eYK5PfxCUHkP-YcjoNfcmRmQOddqnaCIovrH40WAvZjZlWszs68nF-0wsHtXp_cbnGirJKbPgo8i_vPyRXnYrPxSin90tnRLoVQoLGvyL6P44si-_IcCrRUMUmohT5ZKzzqoSVOLhRvu1d8YfPMWM1Y4O-F3hCDOHFbqdB7RLt-YnkwCWUCwOl"/>
+</div>
+</div>
+<div class="w-full md:w-3/4 space-y-6">
+<!-- Event Card 3 -->
+<div class="bg-surface-container-lowest p-8 md:p-10 rounded-2xl hover:bg-white transition-all duration-500 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex-1 space-y-3 text-center md:text-left">
+<span class="font-label text-xs text-primary-container font-bold tracking-widest">18:30 — 20:30</span>
+<h3 class="serif text-2xl text-on-surface">Reflexões de Vésperas</h3>
+<p class="text-secondary font-light">Encontro noturno para explorar textos antigos através de uma lente editorial moderna.</p>
+<div class="flex items-center justify-center md:justify-start gap-4 pt-4 text-xs text-outline uppercase tracking-widest">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">local_library</span> Biblioteca de Arquivos</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">history_edu</span> Seminar</span>
+</div>
+</div>
+<button class="px-8 py-3 bg-gradient-to-tr from-primary to-primary-container text-white rounded-full font-label text-sm tracking-widest uppercase hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                Agendar
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Friday -->
+<section class="group">
+<div class="flex flex-col md:flex-row gap-12 items-start">
+<div class="w-full md:w-1/4 sticky top-40">
+<h2 class="serif text-4xl italic text-on-surface mb-2">Sexta-feira</h2>
+<p class="font-label text-sm tracking-widest uppercase text-outline">Dia de Colheita</p>
+<div class="mt-8 overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low">
+<img alt="Golden wheat field at sunset" class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Golden hour lighting on a wild wheat field with mountains in the distance, warm orange and yellow tones, cinematic feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi-5WiVt2CrIY8NLNs1GFMh_yXxjCUYa8Ql16r9I3EfaS96aDaAjvwSW7crsB_ZLwiWu1NpS_ODKCOxKMIC5Lt8uLtaYgT29ZIMCS8aOx3BANuCmmOKHHvyEtZstcMvIzPqa48LXpJ97xvYHUnkiS8mIHcYvMrndU0XYV0-6uKhnz-NB_YXLTX_PVnYmaYzn4SueALHtPvIuxu58nZcStmPbo7UXykPBTbzYIbc6fM17-wCm8EFs8Y3mvmy6I8emObbGl_fPThTyTH"/>
+</div>
+</div>
+<div class="w-full md:w-3/4 space-y-6">
+<!-- Event Card 4 -->
+<div class="bg-surface-container-lowest p-8 md:p-10 rounded-2xl hover:bg-white transition-all duration-500 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex-1 space-y-3 text-center md:text-left">
+<span class="font-label text-xs text-primary-container font-bold tracking-widest">09:00 — 12:00</span>
+<h3 class="serif text-2xl text-on-surface">O Polimento Final</h3>
+<p class="text-secondary font-light">Workshop intensivo para finalização de projetos editoriais antes da publicação do final de semana.</p>
+<div class="flex items-center justify-center md:justify-start gap-4 pt-4 text-xs text-outline uppercase tracking-widest">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">brush</span> Estúdio A</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">workspace_premium</span> Masterclass</span>
+</div>
+</div>
+<button class="px-8 py-3 bg-gradient-to-tr from-primary to-primary-container text-white rounded-full font-label text-sm tracking-widest uppercase hover:opacity-90 transition-opacity active:scale-95 duration-200">
+                                Agendar
+                            </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#fbf9f8] dark:bg-zinc-950 w-full pt-32 pb-16 flex flex-col items-center text-center px-8">
+<div class="text-3xl font-serif italic text-zinc-800 dark:text-zinc-100 mb-8">Sacred Editorial</div>
+<div class="flex flex-wrap justify-center gap-8 mb-12">
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Privacidade</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Termos</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Contato</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all opacity-80 hover:opacity-100" href="#">Estética</a>
+</div>
+<p class="text-zinc-500 dark:text-zinc-500 font-['Manrope'] text-sm tracking-widest uppercase">© 2024 Sacred Editorial Hub • ✨</p>
+</footer>
+</body></html>

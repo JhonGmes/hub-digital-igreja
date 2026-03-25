@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+// Detect if we are running on Vercel or local
+const isProd = import.meta.env.PROD;
+const baseURL = isProd ? '/api' : 'http://localhost:3001/api';
+
 const api = axios.create({
-  baseURL: 'http://localhost:3001/api',
+  baseURL,
   timeout: 10000,
 });
 

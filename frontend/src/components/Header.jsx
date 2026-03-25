@@ -6,80 +6,78 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { path: '/', label: 'Início' },
-    { path: '/oferta', label: 'Ofertas' },
-    { path: '/programacao', label: 'Programação' },
+    { path: '/', label: 'ENSAIOS' },
+    { path: '/oferta', label: 'OFERTAS' },
+    { path: '/programacao', label: 'MEDITAÇÕES' }, // Mapping 'Programação' to 'Meditações' as per Stitch UI
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-dark">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <span className="text-white text-lg">✝</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-white font-bold text-lg leading-tight">Hub Digital</h1>
-              <p className="text-gold text-xs font-medium -mt-0.5">da Igreja</p>
-            </div>
-          </Link>
+    <header className="fixed top-0 w-full z-50 glass-nav shadow-[0_20px_40px_rgba(77,70,53,0.05)]">
+      <div className="flex justify-between items-center px-6 md:px-12 py-6 max-w-screen-2xl mx-auto">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-serif italic text-zinc-900 dark:text-zinc-50 tracking-wide">
+          Sacred Editorial
+        </Link>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`font-label text-sm tracking-[0.2em] uppercase transition-colors duration-300 ${
+                location.pathname === link.path
+                  ? 'text-primary border-b-2 border-primary pb-1'
+                  : 'text-zinc-500 hover:text-primary'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right side Actions */}
+        <div className="flex items-center gap-6">
+          <button className="material-symbols-outlined text-zinc-600 hover:text-primary transition-colors">
+            language
+          </button>
+          
+          {/* Mobile menu toggle */}
+          <button 
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden material-symbols-outlined text-zinc-900"
+          >
+            {menuOpen ? 'close' : 'menu'}
+          </button>
+          
+          <button className="hidden sm:block bg-primary hover:bg-primary-container text-white px-8 py-2.5 rounded-full font-label text-xs tracking-[0.2em] uppercase transition-all duration-300 active:scale-95 shadow-lg shadow-primary/10">
+            Membro
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Nav Overlay */}
+      {menuOpen && (
+        <div className="md:hidden bg-white/95 backdrop-blur-xl border-t border-surface-container animate-fade-in">
+          <div className="flex flex-col p-8 space-y-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
-                  location.pathname === link.path
-                    ? 'bg-gold/20 text-gold'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                onClick={() => setMenuOpen(false)}
+                className={`font-label text-sm tracking-[0.2em] uppercase ${
+                  location.pathname === link.path ? 'text-primary font-bold' : 'text-zinc-500'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
-          </nav>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white/80 hover:text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+            <button className="bg-primary text-white w-full py-4 rounded-full font-label text-xs tracking-[0.2em] uppercase">
+              Membro
+            </button>
+          </div>
         </div>
-
-        {/* Mobile Nav */}
-        {menuOpen && (
-          <nav className="md:hidden pb-4 animate-fade-in">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setMenuOpen(false)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
-                    location.pathname === link.path
-                      ? 'bg-gold/20 text-gold'
-                      : 'text-white/70 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        )}
-      </div>
+      )}
     </header>
   );
 }

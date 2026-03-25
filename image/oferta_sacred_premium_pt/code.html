@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed-variant": "#474836",
+              "secondary-container": "#dbe4ec",
+              "inverse-primary": "#e9c349",
+              "surface": "#fbf9f8",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-high": "#eae8e7",
+              "on-surface": "#1b1c1c",
+              "error-container": "#ffdad6",
+              "surface-variant": "#e4e2e2",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#3f484e",
+              "on-primary": "#ffffff",
+              "secondary": "#576066",
+              "on-primary-fixed": "#241a00",
+              "primary-fixed": "#ffe088",
+              "primary-container": "#d4af37",
+              "outline-variant": "#d0c5af",
+              "tertiary-container": "#b4b49d",
+              "surface-container-highest": "#e4e2e2",
+              "background": "#fbf9f8",
+              "on-secondary": "#ffffff",
+              "surface-container": "#efeded",
+              "surface-tint": "#735c00",
+              "on-surface-variant": "#4d4635",
+              "surface-dim": "#dbd9d9",
+              "inverse-surface": "#303030",
+              "on-primary-fixed-variant": "#574500",
+              "surface-container-low": "#f5f3f3",
+              "tertiary": "#5e604d",
+              "on-secondary-container": "#5d666c",
+              "on-tertiary-fixed": "#1b1d0e",
+              "inverse-on-surface": "#f2f0f0",
+              "secondary-fixed": "#dbe4ec",
+              "on-background": "#1b1c1c",
+              "surface-bright": "#fbf9f8",
+              "on-secondary-fixed": "#141d22",
+              "on-tertiary-container": "#454634",
+              "secondary-fixed-dim": "#bfc8cf",
+              "on-primary-container": "#554300",
+              "tertiary-fixed": "#e4e4cc",
+              "primary": "#735c00",
+              "tertiary-fixed-dim": "#c8c8b0",
+              "outline": "#7f7663",
+              "primary-fixed-dim": "#e9c349"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #fbf9f8;
+        color: #1b1c1c;
+      }
+      .font-serif { font-family: 'Noto Serif', serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(77,70,53,0.05)]">
+<nav class="flex justify-between items-center px-6 md:px-12 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-serif italic text-zinc-900 dark:text-zinc-50 tracking-wide">Sacred Editorial</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#D4AF37] border-b-2 border-[#D4AF37] pb-1 font-['Manrope'] text-sm tracking-widest uppercase" href="#">ENSAIOS</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-300" href="#">ARQUIVOS</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-300" href="#">MEDITAÇÕES</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-300" href="#">SANTUÁRIO</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-600 hover:text-primary transition-colors">language</button>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-20 max-w-screen-xl mx-auto px-6">
+<!-- SECTION 1: Acolhimento (Greeting & Intent) -->
+<section class="mb-24 flex flex-col items-center text-center">
+<div class="w-full h-96 mb-16 rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10"></div>
+<img class="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-1000" data-alt="Soft morning light streaming through high stained glass windows of a serene modern cathedral, creating atmospheric golden dust motes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnWY6hu2Y-kKYvRAV12QyMnw80hEe1t8B9-EBaO27hTBaMpTJcwnKKr-ssaem3iwNwBRa_dOgRZcOLMFHZDQrYgLhNzdNJYCDeao0HoDilN0SXbIwsm1EkcFX-82RnksC0p9gl-tOsg82vSsBsuDsL7mdg3nEBvz8TFZ-n_crchDb3kpEENNtk6zfb7nnbo37oIwo1vjY57j5c2zJthR8ZHKrCz0RT4ETCyZkcBuV95tUHjdMDLYcY1p1G_EI-7aAPG4878qnd9btO"/>
+<div class="absolute bottom-12 left-0 right-0 z-20 px-8">
+<span class="font-body text-white/90 text-sm tracking-[0.3em] uppercase mb-4 block">Oferta &amp; Gratidão</span>
+<h1 class="font-serif text-5xl md:text-7xl text-white italic leading-tight">Um gesto de fé, <br/> uma ponte de amor.</h1>
+</div>
+</div>
+<div class="max-w-3xl mx-auto mt-12 px-4">
+<p class="font-body text-xl md:text-2xl text-on-surface-variant leading-relaxed font-light">
+                    Sua contribuição sustenta nossa missão e mantém viva a chama da comunidade. Escolha como deseja manifestar seu apoio hoje.
+                </p>
+</div>
+</section>
+<!-- SECTION 2: Escolha (Offer Categories) -->
+<section class="mb-32">
+<div class="flex items-baseline justify-between mb-12 border-b border-outline-variant/20 pb-6">
+<h2 class="font-serif text-3xl italic text-on-surface">Destine sua doação</h2>
+<span class="font-body text-xs tracking-widest uppercase text-outline">Selecione uma categoria</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card: Missa -->
+<button class="group relative flex flex-col p-10 bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(77,70,53,0.03)] hover:shadow-[0_30px_60px_rgba(77,70,53,0.08)] transition-all duration-500 text-left items-start outline-none focus:ring-2 focus:ring-primary-container">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">auto_awesome</span>
+</div>
+<h3 class="font-serif text-2xl mb-3 text-on-surface">Missa</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-6">Intenções particulares e celebrações comunitárias.</p>
+<div class="mt-auto flex items-center text-primary font-bold text-xs tracking-widest uppercase group-hover:translate-x-2 transition-transform">
+                        Selecionar <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</button>
+<!-- Card: Construção -->
+<button class="group relative flex flex-col p-10 bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(77,70,53,0.03)] hover:shadow-[0_30px_60px_rgba(77,70,53,0.08)] transition-all duration-500 text-left items-start outline-none focus:ring-2 focus:ring-primary-container border-2 border-primary-container/20">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-white text-3xl">architecture</span>
+</div>
+<h3 class="font-serif text-2xl mb-3 text-on-surface">Construção</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-6">Manutenção e expansão física do nosso santuário.</p>
+<div class="mt-auto flex items-center text-primary font-bold text-xs tracking-widest uppercase">
+                        Ativo <span class="material-symbols-outlined ml-2 text-sm">check_circle</span>
+</div>
+</button>
+<!-- Card: Dízimo -->
+<button class="group relative flex flex-col p-10 bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(77,70,53,0.03)] hover:shadow-[0_30px_60px_rgba(77,70,53,0.08)] transition-all duration-500 text-left items-start outline-none focus:ring-2 focus:ring-primary-container">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">volunteer_activism</span>
+</div>
+<h3 class="font-serif text-2xl mb-3 text-on-surface">Dízimo</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-6">Seu compromisso mensal com a vida eclesial.</p>
+<div class="mt-auto flex items-center text-primary font-bold text-xs tracking-widest uppercase group-hover:translate-x-2 transition-transform">
+                        Selecionar <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</button>
+<!-- Card: Ação Social -->
+<button class="group relative flex flex-col p-10 bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(77,70,53,0.03)] hover:shadow-[0_30px_60px_rgba(77,70,53,0.08)] transition-all duration-500 text-left items-start outline-none focus:ring-2 focus:ring-primary-container">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white transition-colors">diversity_3</span>
+</div>
+<h3 class="font-serif text-2xl mb-3 text-on-surface">Ação Social</h3>
+<p class="font-body text-on-surface-variant text-sm leading-relaxed mb-6">Apoio direto às famílias e projetos da paróquia.</p>
+<div class="mt-auto flex items-center text-primary font-bold text-xs tracking-widest uppercase group-hover:translate-x-2 transition-transform">
+                        Selecionar <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</div>
+</button>
+</div>
+</section>
+<!-- SECTION 3: Pagamento (Payment Section) -->
+<section class="max-w-4xl mx-auto">
+<div class="bg-surface-container-low rounded-xl p-8 md:p-16 relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+<!-- Left Side: QR Code Area -->
+<div class="flex flex-col items-center">
+<div class="bg-white p-6 rounded-xl shadow-sm mb-8 border border-outline-variant/10">
+<!-- Simulated QR Code -->
+<div class="w-48 h-48 bg-zinc-50 flex items-center justify-center relative border border-zinc-100">
+<span class="material-symbols-outlined text-6xl text-zinc-200">qr_code_2</span>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-primary-container">verified</span>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<h4 class="font-serif text-xl mb-2">Escaneie o PIX</h4>
+<p class="font-body text-sm text-on-surface-variant">Aponte a câmera do seu celular para realizar a oferta instantaneamente.</p>
+</div>
+</div>
+<!-- Right Side: Manual Copy & Actions -->
+<div class="flex flex-col">
+<h4 class="font-serif text-2xl mb-6">Chave para Cópia</h4>
+<div class="mb-8">
+<label class="font-body text-xs tracking-widest uppercase text-outline block mb-2">Chave Aleatória</label>
+<div class="flex items-center gap-2 p-4 bg-white rounded-lg border border-outline-variant/30 group">
+<code class="font-mono text-sm text-on-surface truncate flex-1">00020126580014br.gov.bcb.pix0136e4f3...</code>
+<button class="p-2 hover:bg-surface-container transition-colors rounded-md text-primary" title="Copiar chave">
+<span class="material-symbols-outlined">content_copy</span>
+</button>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-3">
+<span>Concluir Doação</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+<button class="w-full py-4 text-on-surface-variant font-bold text-sm tracking-widest uppercase hover:text-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+                                Ver Histórico de Ofertas
+                            </button>
+</div>
+<div class="mt-8 flex items-center gap-3 p-4 bg-white/50 rounded-lg border border-white">
+<span class="material-symbols-outlined text-primary">security</span>
+<p class="text-[10px] text-on-surface-variant leading-tight">
+                                Transação processada de forma segura e criptografada. <br/>Sua privacidade é sagrada para nós.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full pt-32 pb-16 bg-[#fbf9f8] dark:bg-zinc-950 flex flex-col items-center text-center px-8">
+<div class="text-3xl font-serif italic text-zinc-800 dark:text-zinc-100 mb-8">Sacred Editorial</div>
+<div class="flex flex-wrap justify-center gap-12 mb-16">
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all" href="#">PRIVACIDADE</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all" href="#">TERMOS</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all" href="#">CONTATO</a>
+<a class="font-['Manrope'] text-sm tracking-widest uppercase text-zinc-500 hover:text-[#D4AF37] underline-offset-4 hover:underline transition-all" href="#">ESTÉTICA</a>
+</div>
+<div class="font-['Manrope'] text-xs text-zinc-400 opacity-80">
+            © 2024 Sacred Editorial Hub • ✨
+        </div>
+</footer>
+<!-- FAB (Suppressed as per rules for detailed/transactional page, but added placeholder if needed in home) -->
+</body></html>
