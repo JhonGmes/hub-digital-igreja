@@ -1,136 +1,158 @@
 import { Link } from 'react-router-dom';
 
 export default function Home() {
+  const featuredEvents = [
+    {
+      title: 'Vigília da Luz',
+      description: 'Um momento de introspecção e oração sob a luz das velas.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCc9AnRcyb_Lk8nCZXWAv2lFGeDKJ1H-fbGgeUqR3WPX1kS1Pzio7NdpXUaLbAee9MQUUMzQI0MdixeYpMLGIrgiwoOCAeDL_PgOtGeMtAsZmCHmIPK1_o1bym6zUIZ-pSqy2FFA7T7EFs3Od0NwQSFfm9tjtPEdQO24DTSHhPbDTCODtEEhZX5t-72gVRc4oFGcidPtHPyUdu68yhD5VC1qFqxv8WfCjWv8DOzh-NhBEF_BEi2RX3PpseNdNGZHaUg8UIJ5T_2ugZX',
+    },
+    {
+      title: 'Círculo de Estudos',
+      description: 'Encontros semanais para aprofundamento da nossa fé.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBryZsHZTnlGYutShpJO2cWZIZb1eP9kavrMVa-4zBiczybcDZpU1a52O_DwpV_0ik7wHt6lgwWBu8_rdBUsJpu-AcEfv5YXv-czlDYOCcBV9R93wzc1QUteYR8kQlwMeDUrdWsgBV4ry_mm-Sy_8R4S6pJ2U_vVumMmwk2g3p7slQHA-4i2K51lxJpFjtYW-OVoSab2k2k2YnTEu-1_L_MX0LCfHFobj2e_4BjXT_XaU0ilbTZ0-pXHpEHw9175SLK8s1u0_BUPOuq',
+    },
+    {
+      title: 'Impacto Social',
+      description: 'Conheça nossos projetos de apoio à comunidade local.',
+      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCi-5WiVt2CrIY8NLNs1GFMh_yXxjCUYa8Ql16r9I3EfaS96aDaAjvwSW7crsB_ZLwiWu1NpS_ODKCOxKMIC5Lt8uLtaYgT29ZIMCS8aOx3BANuCmmOKHHvyEtZstcMvIzPqa48LXpJ97xvYHUnkiS8mIHcYvMrndU0XYV0-6uKhnz-NB_YXLTX_PVnYmaYzn4SueALHtPvIuxu58nZcStmPbo7UXykPBTbzYIbc6fM17-wCm8EFs8Y3mvmy6I8emObbGl_fPThTyTH',
+    }
+  ];
+
   return (
-    <div className="bg-surface selection:bg-primary-container selection:text-on-primary-container">
-      {/* Hero Section */}
-      <section className="relative h-[870px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            alt="Interior de catedral" 
-            className="w-full h-full object-cover" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Ud01TJ2N7o-elR1hkzyIs_VuIF6ZWQ7ynt9u52rTk7z_l8N8uNMDNsWNrp-b3VZ5fzccwgQGkm3PvBzMqkHNlvnrFUjng28Sg78P-RI3qVHt1pMjGqs3dpX68T4GjwOYUn2Lyt1bv-1pwcT8FSgD4ILr8V-b5hosh3X_U-F8cwmKVDrQsu40RZn-4SDAmCVuSvKaant0BL5OJ1en8QH6Z0mG7Snh5lYe1kU_rAIo2pjTypeOXgxSQ_WC70HqO0AJ-VXIwXLdQyut" 
-          />
-          <div className="absolute inset-0 bg-zinc-900/40 backdrop-brightness-75"></div>
+    <div className="bg-white">
+      {/* HERO SECTION */}
+      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        {/* Abstract Background */}
+        <div className="absolute inset-0 bg-stone-50 z-0">
+          <div className="absolute right-0 top-0 w-2/3 h-full bg-zinc-100/50 clip-path-hero hidden lg:block"></div>
         </div>
         
-        <div className="relative z-10 text-center max-w-4xl px-8 animate-fade-in">
-          <span className="font-label text-primary-fixed uppercase tracking-[0.4em] mb-6 block hero-glow text-primary-container">
-            Bem-vindo à Experiência
-          </span>
-          <h1 className="font-headline text-6xl md:text-8xl text-white italic tracking-tight leading-tight mb-8 hero-glow">
-            A beleza do sagrado em cada detalhe.
-          </h1>
-          <p className="font-body text-xl text-zinc-100/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-            Um espaço digital dedicado à contemplação, ao estudo e à conexão profunda com o divino e o comunitário.
-          </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
-            <Link 
-              to="/oferta" 
-              className="bg-primary-container text-on-primary-container px-10 py-5 rounded-full font-label font-bold text-sm tracking-[0.2em] uppercase shadow-xl hover:shadow-primary-container/20 transition-all duration-500 active:scale-95"
-            >
-              Fazer minha oferta
-            </Link>
-            <Link 
-              to="/programacao" 
-              className="text-white border border-white/30 backdrop-blur-md px-10 py-5 rounded-full font-label text-sm tracking-[0.2em] uppercase hover:bg-white hover:text-zinc-900 transition-all duration-500"
-            >
-              Conhecer o Santuário
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Quote Section */}
-      <section className="py-32 bg-surface overflow-hidden">
-        <div className="max-w-screen-xl mx-auto px-12 text-center animate-slide-up">
-          <div className="inline-block mb-12">
-            <span className="material-symbols-outlined text-4xl text-primary-container" style={{ fontVariationSettings: "'FILL' 1" }}>
-              format_quote
+        <div className="section-container relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8 animate-slide-up">
+            <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full">
+              Bem-vindo ao Hub Digital
             </span>
-          </div>
-          <h2 className="font-headline text-3xl md:text-5xl italic text-on-surface leading-snug max-w-5xl mx-auto mb-8">
-            "A alma não respira através de palavras articuladas, mas através do silêncio que precede a oração profunda."
-          </h2>
-          <p className="font-label text-outline tracking-widest uppercase text-sm">— Sto. Agostinho</p>
-        </div>
-      </section>
-
-      {/* Bento Grid Sections */}
-      <section className="pb-32 px-12 max-w-screen-2xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Large Event Card */}
-          <div className="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low p-12 flex flex-col justify-end min-h-[500px] shadow-sm animate-fade-in">
-            <div className="absolute inset-0 z-0">
-              <img 
-                alt="Vela acesa" 
-                className="w-full h-full object-cover grayscale opacity-20 group-hover:scale-105 transition-transform duration-700" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA76fJ1TTr6OhZEmtQXQwvrDR7XmC1PMPt_1Msa5pGiPzp40pLsXfLp7WSSqr2IbNahogEvIZQtFtpEDngkEsCNrvGkOUNqHVmTMSNvqdHAxM_3q7Ql3Ac7hpFkaOOn2CJZBvtaqmbswt5-zXdBrCynE-KlHDssVPZ3xL7n7xMFTo0XVrGmNar2QGb-sKNIpI6Z8dQxVPt7JTaJmDI1c2pCaqyXW_HnCWAJckATzWpe03kgFIpNwYg69EAO9fWl-JWeWUGg0-GfEvm1" 
-              />
-            </div>
-            <div className="relative z-10">
-              <span className="text-primary-container font-label tracking-widest uppercase text-xs mb-4 block">Próximo Encontro</span>
-              <h3 className="font-headline text-4xl italic text-on-background mb-6">Vigília da Luz & Meditação</h3>
-              <p className="font-body text-on-surface-variant max-w-md mb-8">Junte-se a nós para uma noite de silêncio e reflexão coletiva sob a luz suave das velas.</p>
-              <Link to="/programacao" className="inline-flex items-center gap-3 text-on-background font-label text-sm uppercase tracking-widest border-b border-primary-container pb-1 group-hover:gap-5 transition-all">
-                Ver detalhes <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            <h1 className="text-5xl md:text-7xl leading-tight">
+              A presença da <span className="text-primary italic">fé</span> em cada detalhe digital.
+            </h1>
+            <p className="text-xl text-zinc-500 leading-relaxed max-w-lg">
+              Um espaço dedicado à oração, comunidade e apoio mútuo. Acesse nossas informações, eventos e realize suas ofertas com praticidade.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link to="/oferta" className="button-primary">
+                Fazer minha oferta
+                <span className="material-symbols-outlined">favorite</span>
+              </Link>
+              <Link to="/programacao" className="button-secondary">
+                Ver programação
               </Link>
             </div>
           </div>
-
-          {/* Small Info Card */}
-          <div className="md:col-span-4 rounded-xl bg-surface-container-lowest border border-outline-variant/10 p-12 flex flex-col shadow-sm animate-fade-in delay-100">
-            <div className="bg-primary/5 w-16 h-16 rounded-full flex items-center justify-center mb-8">
-              <span className="material-symbols-outlined text-primary text-3xl">auto_stories</span>
-            </div>
-            <h3 className="font-headline text-2xl italic mb-4">Círculo de Estudos</h3>
-            <p className="font-body text-on-surface-variant text-sm leading-relaxed mb-8">Explorando os clássicos da espiritualidade ocidental e oriental em encontros semanais presenciais e online.</p>
-            <button className="mt-auto text-primary font-label text-xs uppercase tracking-widest hover:underline underline-offset-8 transition-all">Inscrever-se</button>
-          </div>
-
-          {/* Grid Bottom Row */}
-          <div className="md:col-span-4 rounded-xl bg-surface-container-low p-12 flex flex-col shadow-sm border border-transparent hover:border-outline-variant transition-colors duration-500 animate-fade-in delay-200">
-            <span className="material-symbols-outlined text-primary-container mb-6">volunteer_activism</span>
-            <h3 className="font-headline text-2xl italic mb-4">Voluntariado</h3>
-            <p className="font-body text-on-surface-variant text-sm mb-6">Transforme sua fé em ação através de nossos programas de apoio comunitário e justiça social.</p>
-            <div className="flex items-center gap-4 pt-4 border-t border-outline-variant/20">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 rounded-full bg-zinc-300 border-2 border-surface"></div>
-                <div className="w-8 h-8 rounded-full bg-zinc-400 border-2 border-surface"></div>
-                <div className="w-8 h-8 rounded-full bg-zinc-500 border-2 border-surface"></div>
-              </div>
-              <span className="text-xs font-label text-outline">+120 ativos</span>
-            </div>
-          </div>
-
-          <div className="md:col-span-8 rounded-xl bg-surface-container-low p-12 flex flex-col md:flex-row items-center gap-12 shadow-sm animate-fade-in delay-300">
-            <div className="flex-1">
-              <h3 className="font-headline text-3xl italic mb-4 text-on-background">Impacto Social</h3>
-              <p className="font-body text-on-surface-variant leading-relaxed">Nossas iniciativas no último ano alcançaram mais de 5.000 famílias em situação de vulnerabilidade, provendo não apenas alimento, mas dignidade e escuta.</p>
-            </div>
-            <div className="w-full md:w-1/3 aspect-square rounded-lg overflow-hidden">
+          
+          <div className="relative animate-fade-in hidden lg:block">
+            <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl relative">
               <img 
-                alt="Comunidade" 
-                className="w-full h-full object-cover" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEYhg8FutGTNpM4FMPS6a68NYaNJlhylYO5qcYg6QbMnQl4TkqjTRlDtXxGLe0ed8QjDlgoyD1E6VRrlDtrmuuuarfT-SToaBcNHVm3pXAPDs2Fr3MNz1_E3EmqsEas2x1OSIL5WxeZwjc61eBX9nIt60bD8XfI6AizvfoQa2rAwRJr3N6YUNKhHzvFAu6-tsfd9ax2mhwt1zzLYJbRouhkcu6bik5wdZq8b9P4Pv89t-U5Lok82PfdmuRZzDk9_OUiETyhivA9ufW" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5WGlBffr9pVdzKOUqXFSXdKmwDw0Tx5wlwcYLC_EwmF67liZuc1rL7rbna9NTyq-1uo0f_URw_NKYlhxD-dW_W35DxyK4c5lCv-hwAKMNqKCf-Jm1q3Bycenabvb6Tz7ZxpbpDVKJ1daFKMTUBDWnOq4dE-xZ5Ki1CC37W5DhK4cE7lTa_kCF9uUTKYR90_T-tT9Qmgihpqlg4CHRTCRI-JepDjAZJnapS02fPWPvmnx6F5YF0Ct6FR1vgGTc8ICbQs9dBKTmHZ4i" 
+                alt="Interior da Igreja"
+                className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Aesthetic CTA Section */}
-      <section className="py-32 bg-surface-container">
-        <div className="max-w-screen-xl mx-auto px-12">
-          <div className="bg-surface-container-lowest rounded-xl p-16 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-sm">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-container to-transparent"></div>
-            <h2 className="font-headline text-4xl md:text-6xl italic mb-8 max-w-3xl">Torne-se parte do círculo de mantenedores.</h2>
-            <p className="font-body text-on-surface-variant text-lg max-w-xl mb-12">Sua contribuição sustenta nossas obras sociais, a manutenção de nosso espaço e a produção de conteúdo exclusivo para membros.</p>
-            <Link 
-              to="/oferta"
-              className="bg-primary text-white px-12 py-5 rounded-full font-label text-sm uppercase tracking-[0.3em] hover:bg-primary-container transition-all shadow-lg active:scale-95"
-            >
-              Filiar-se agora
+      {/* FEATURED EVENTS SECTION */}
+      <section className="bg-zinc-50 overflow-hidden">
+        <div className="section-container">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div className="space-y-4">
+              <h2 className="text-4xl text-zinc-900">Nossa Programação</h2>
+              <p className="text-zinc-500 max-w-md">
+                Participe dos nossos encontros semanais e fortaleça sua conexão espiritual.
+              </p>
+            </div>
+            <Link to="/programacao" className="text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+              Ver programação completa
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredEvents.map((event, i) => (
+              <div key={i} className="card-professional group">
+                <div className="rounded-lg overflow-hidden aspect-video mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                  <img src={event.image} alt={event.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                </div>
+                <h3 className="text-2xl mb-3">{event.title}</h3>
+                <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+                  {event.description}
+                </p>
+                <div className="text-primary font-bold text-xs uppercase tracking-widest flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Saiba mais
+                  <span className="material-symbols-outlined text-sm">open_in_new</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT / MISSION SECTION */}
+      <section className="bg-white">
+        <div className="section-container">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="order-2 lg:order-1 relative">
+              <div className="absolute -inset-4 bg-primary/5 rounded-2xl rotate-3"></div>
+              <div className="card-professional relative bg-white flex flex-col items-center gap-8 py-16">
+                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                  <span className="material-symbols-outlined text-4xl">volunteer_activism</span>
+                </div>
+                <div className="text-center space-y-2">
+                  <h4 className="text-4xl">1k+</h4>
+                  <p className="text-zinc-400 font-bold uppercase tracking-widest text-xs">Vidas Impactadas</p>
+                </div>
+                <p className="text-zinc-500 italic max-w-xs text-center">
+                  "O amor é a força que transforma o mundo e aproxima os corações."
+                </p>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2 space-y-6">
+              <span className="font-bold text-xs tracking-widest uppercase text-zinc-400">Nossa Missão</span>
+              <h2 className="text-4xl md:text-5xl">Unindo a tradição da fé com a agilidade do digital.</h2>
+              <p className="text-lg text-zinc-500 leading-relaxed">
+                Nossa comunidade busca ser um farol de luz no mundo moderno. Através deste hub, facilitamos o acesso às orações, doações e à vida eclesial, garantindo que você nunca esteja longe da sua casa espiritual.
+              </p>
+              <ul className="space-y-4 pt-4">
+                {['Transparência nas doações', 'Acesso fácil à programação', 'Comunicação direta com a paróquia'].map(item => (
+                  <li key={item} className="flex items-center gap-3 text-zinc-700 font-medium">
+                    <span className="material-symbols-outlined text-primary">check_circle</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CALL TO ACTION SECTION */}
+      <section className="bg-zinc-900 py-32 relative overflow-hidden text-center">
+        <div className="absolute inset-0 opacity-10 blur-3xl bg-primary transform -translate-y-1/2"></div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 space-y-10">
+          <h2 className="text-4xl md:text-6xl text-white">Pronto para ser parte da nossa jornada?</h2>
+          <p className="text-zinc-400 text-lg">
+            Sua presença e contribuição são o que tornam nossa comunidade mais forte a cada dia.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link to="/oferta" className="button-primary bg-white text-zinc-900 border-none px-12 py-4">
+              Realizar Oferta
+            </Link>
+            <Link to="/configuracao" className="text-white font-bold flex items-center gap-2 hover:opacity-80 transition-all">
+              Acessar Painel
+              <span className="material-symbols-outlined">login</span>
             </Link>
           </div>
         </div>

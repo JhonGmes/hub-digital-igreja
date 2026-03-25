@@ -1,194 +1,90 @@
-import { useState, useEffect, useRef } from 'react';
-import { getOfertas, getOferta } from '../services/api';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Oferta() {
-  const [categories, setCategories] = useState([]);
-  const [selectedId, setSelectedId] = useState(null);
-  const [paymentData, setPaymentData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const paymentSectionRef = useRef(null);
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  useEffect(() => {
-    getOfertas().then(data => {
-      setCategories(data);
-      setLoading(false);
-    });
-  }, []);
-
-  const handleSelect = async (id) => {
-    setSelectedId(id);
-    setPaymentData(null);
-    const data = await getOferta(id);
-    setPaymentData(data);
-    
-    // Scroll to payment section
-    setTimeout(() => {
-      paymentSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  };
-
-  const copyToClipboard = () => {
-    if (paymentData?.chavePix) {
-      navigator.clipboard.writeText(paymentData.chavePix);
-      alert('Chave PIX copiada!');
-    }
-  };
-
-  if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-surface">
-      <div className="w-12 h-12 border-4 border-primary-container border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  );
+  const categories = [
+    { id: 'dizimo', title: 'Dízimo', icon: 'payments', desc: 'Sua contribuição mensal para a manutenção da casa.' },
+    { id: 'oferta', title: 'Oferta', icon: 'favorite', desc: 'Gesto espontâneo de amor e gratidão pela vida.' },
+    { id: 'obra', title: 'Obras', icon: 'construction', desc: 'Apoio à reforma e ampliação do nosso templo.' },
+    { id: 'missao', title: 'Missão', icon: 'public', desc: 'Recursos destinados a projetos sociais e missionários.' },
+  ];
 
   return (
-    <div className="bg-background selection:bg-primary-fixed selection:text-on-primary-fixed">
-      {/* SECTION 1: Acolhimento (Greeting & Intent) */}
-      <section className="pt-32 pb-20 max-w-screen-xl mx-auto px-6 animate-fade-in">
-        <div className="w-full h-96 mb-16 rounded-xl overflow-hidden relative group">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40 z-10"></div>
-          <img 
-            className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-1000" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnWY6hu2Y-kKYvRAV12QyMnw80hEe1t8B9-EBaO27hTBaMpTJcwnKKr-ssaem3iwNwBRa_dOgRZcOLMFHZDQrYgLhNzdNJYCDeao0HoDilN0SXbIwsm1EkcFX-82RnksC0p9gl-tOsg82vSsBsuDsL7mdg3nEBvz8TFZ-n_crchDb3kpEENNtk6zfb7nnbo37oIwo1vjY57j5c2zJthR8ZHKrCz0RT4ETCyZkcBuV95tUHjdMDLYcY1p1G_EI-7aAPG4878qnd9btO"
-            alt="Interior do Santuário"
-          />
-          <div className="absolute bottom-12 left-0 right-0 z-20 px-8">
-            <span className="font-body text-white/90 text-sm tracking-[0.3em] uppercase mb-4 block">Oferta & Gratidão</span>
-            <h1 className="font-serif text-5xl md:text-7xl text-white italic leading-tight">
-              Um gesto de fé, <br/> uma ponte de amor.
-            </h1>
-          </div>
-        </div>
-        
-        <div className="max-w-3xl mx-auto mt-12 px-4 text-center">
-          <p className="font-body text-xl md:text-2xl text-on-surface-variant leading-relaxed font-light">
-            Sua contribuição sustenta nossa missão e mantém viva a chama da comunidade. Escolha como deseja manifestar seu apoio hoje.
+    <div className="pt-32 pb-20 bg-zinc-50 min-h-screen">
+      <div className="section-container">
+        {/* Page Header */}
+        <div className="max-w-3xl mx-auto text-center space-y-6 mb-16">
+          <span className="font-bold text-xs tracking-widest uppercase text-primary">Contribua</span>
+          <h1 className="text-4xl md:text-6xl">Sua oferta é um gesto de amor.</h1>
+          <p className="text-lg text-zinc-500">
+            Agradecemos imensamente por sua generosidade. Escolha uma das categorias abaixo para realizar sua contribuição de forma segura.
           </p>
         </div>
-      </section>
 
-      {/* SECTION 2: Escolha (Offer Categories) */}
-      <section className="max-w-screen-xl mx-auto px-6 mb-32 animate-slide-up">
-        <div className="flex items-baseline justify-between mb-12 border-b border-outline-variant/20 pb-6">
-          <h2 className="font-serif text-3xl italic text-on-surface">Destine sua doação</h2>
-          <span className="font-body text-xs tracking-widest uppercase text-outline">Selecione uma categoria</span>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Categories Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20 animate-slide-up">
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => handleSelect(cat.id)}
-              className={`group relative flex flex-col p-10 rounded-xl transition-all duration-500 text-left items-start outline-none focus:ring-2 focus:ring-primary-container ${
-                selectedId === cat.id 
-                  ? 'bg-surface-container-lowest border-2 border-primary-container/20 shadow-[0_30px_60px_rgba(77,70,53,0.08)]' 
-                  : 'bg-surface-container-lowest shadow-[0_20px_40px_rgba(77,70,53,0.03)] hover:shadow-[0_30px_60px_rgba(77,70,53,0.08)]'
+              onClick={() => setSelectedCategory(cat)}
+              className={`card-professional text-left group transition-all ${
+                selectedCategory?.id === cat.id 
+                  ? 'border-primary ring-2 ring-primary/10 shadow-xl' 
+                  : 'hover:border-zinc-300'
               }`}
             >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-8 transition-colors duration-500 ${
-                selectedId === cat.id ? 'bg-primary-container' : 'bg-secondary-container group-hover:bg-primary-container'
+              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
+                selectedCategory?.id === cat.id ? 'bg-primary text-white' : 'bg-zinc-100 text-zinc-500 group-hover:bg-primary/10 group-hover:text-primary'
               }`}>
-                <span className={`material-symbols-outlined text-3xl transition-colors ${
-                  selectedId === cat.id ? 'text-white' : 'text-primary group-hover:text-white'
-                }`}>
-                  {cat.icone}
-                </span>
+                <span className="material-symbols-outlined">{cat.icon}</span>
               </div>
-              <h3 className="font-serif text-2xl mb-3 text-on-surface">{cat.nome}</h3>
-              <p className="font-body text-on-surface-variant text-sm leading-relaxed mb-6">
-                {cat.descricao}
+              <h3 className="text-xl mb-2">{cat.title}</h3>
+              <p className="text-zinc-500 text-sm leading-relaxed">
+                {cat.desc}
               </p>
-              <div className={`mt-auto flex items-center font-bold text-xs tracking-widest uppercase transition-all ${
-                selectedId === cat.id ? 'text-primary' : 'text-primary group-hover:translate-x-2'
-              }`}>
-                {selectedId === cat.id ? 'Selecionado' : 'Selecionar'}
-                <span className="material-symbols-outlined ml-2 text-sm">
-                  {selectedId === cat.id ? 'check_circle' : 'arrow_forward'}
-                </span>
-              </div>
             </button>
           ))}
         </div>
-      </section>
 
-      {/* SECTION 3: Pagamento (Payment Section) */}
-      <section 
-        ref={paymentSectionRef}
-        className={`max-w-4xl mx-auto px-6 pb-32 transition-all duration-700 ${
-          selectedId ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
-        }`}
-      >
-        <div className="bg-surface-container-low rounded-xl p-8 md:p-16 relative overflow-hidden shadow-sm">
-          {/* Decorative background elements */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
-          
-          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            {/* Left Side: QR Code Area */}
-            <div className="flex flex-col items-center">
-              <div className="bg-white p-6 rounded-xl shadow-sm mb-8 border border-outline-variant/10">
-                {paymentData?.qrCodeUrl ? (
-                  <img src={paymentData.qrCodeUrl} alt="QR Code PIX" className="w-48 h-48" />
-                ) : (
-                  <div className="w-48 h-48 bg-zinc-50 flex items-center justify-center relative border border-zinc-100">
-                    <span className="material-symbols-outlined text-6xl text-zinc-200">qr_code_2</span>
-                  </div>
-                )}
-              </div>
-              <div className="text-center">
-                <h4 className="font-serif text-xl mb-2">Escaneie o PIX</h4>
-                <p className="font-body text-sm text-on-surface-variant">
-                  Aponte a câmera do seu celular para realizar a oferta instantaneamente via {paymentData?.nome}.
+        {/* Payment Section (Conditional) */}
+        {selectedCategory && (
+          <div className="animate-fade-in max-w-4xl mx-auto">
+            <div className="bg-white border border-outline rounded-2xl overflow-hidden shadow-2xl overflow-hidden flex flex-col md:flex-row">
+              <div className="md:w-1/2 p-12 bg-zinc-900 text-white space-y-8">
+                <div className="inline-block px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+                  Categoria Selecionada: {selectedCategory.title}
+                </div>
+                <h2 className="text-3xl text-white">Pronto para contribuir?</h2>
+                <p className="text-zinc-400 leading-relaxed">
+                  Utilize o QR Code ao lado ou clique no botão para copiar a chave PIX da nossa paróquia. Sua oferta será processada com total segurança.
                 </p>
-              </div>
-            </div>
-
-            {/* Right Side: Manual Copy & Actions */}
-            <div className="flex flex-col">
-              <h4 className="font-serif text-2xl mb-6">Chave para Cópia</h4>
-              <div className="mb-8">
-                <label className="font-label text-xs tracking-widest uppercase text-outline block mb-2">Chave Aleatória</label>
-                <div className="flex items-center gap-2 p-4 bg-white rounded-lg border border-outline-variant/30 group">
-                  <code className="font-mono text-xs text-on-surface truncate flex-1">
-                    {paymentData?.chavePix || 'Gerando chave...'}
-                  </code>
+                <div className="pt-6">
                   <button 
-                    onClick={copyToClipboard}
-                    className="p-2 hover:bg-surface-container transition-colors rounded-md text-primary" 
-                    title="Copiar chave"
+                    onClick={() => navigate(`/pagamento/${selectedCategory.id}`)}
+                    className="button-primary bg-primary w-full border-none py-4 text-base"
                   >
-                    <span className="material-symbols-outlined">content_copy</span>
+                    Prosseguir para Pagamento
+                    <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <button 
-                  onClick={() => alert('Obrigado por sua doação!')}
-                  className="w-full py-5 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform flex items-center justify-center gap-3"
-                >
-                  <span>Concluir Doação</span>
-                  <span className="material-symbols-outlined">send</span>
-                </button>
-                
-                <a 
-                  href={`pix:${paymentData?.chavePix}`}
-                  className="w-full py-4 text-on-surface-variant font-bold text-sm tracking-widest uppercase hover:text-primary transition-colors flex items-center justify-center gap-2"
-                >
-                  <span className="material-symbols-outlined text-lg">account_balance</span>
-                  Abrir App do Banco
-                </a>
-              </div>
-              
-              <div className="mt-8 flex items-center gap-3 p-4 bg-white/50 rounded-lg border border-white">
-                <span className="material-symbols-outlined text-primary">security</span>
-                <p className="text-[10px] text-on-surface-variant leading-tight uppercase tracking-tighter">
-                  Transação processada de forma segura e criptografada. <br/>Sua privacidade é sagrada para nós.
-                </p>
+              <div className="md:w-1/2 p-12 flex flex-col items-center justify-center bg-white space-y-6 text-center">
+                <div className="w-48 h-48 bg-zinc-100 rounded-2xl flex items-center justify-center text-zinc-300 border-2 border-dashed border-zinc-200">
+                  <span className="material-symbols-outlined text-6xl">qr_code_2</span>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm font-bold text-zinc-900">Escaneie o QR Code</p>
+                  <p className="text-xs text-zinc-400">Aponte a câmera do seu app bancário</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        )}
+      </div>
     </div>
   );
 }

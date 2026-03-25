@@ -1,138 +1,82 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @theme {
-  /* Material Design 3 Palette from Stitch */
-  --color-primary: #735c00;
-  --color-primary-container: #d4af37;
+  --font-headline: "Inter", "system-ui", "sans-serif";
+  --font-body: "Inter", "system-ui", "sans-serif";
+  --font-label: "Inter", "system-ui", "sans-serif";
+
+  --color-primary: #8d701e; /* Refined Bronze */
+  --color-primary-container: #f4ecd0;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #554300;
-  --color-secondary: #576066;
-  --color-secondary-container: #dbe4ec;
-  --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #5d666c;
-  --color-tertiary: #5e604d;
-  --color-tertiary-container: #b4b49d;
-  --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #454634;
-  --color-surface: #fbf9f8;
-  --color-surface-bright: #fbf9f8;
-  --color-surface-dim: #dbd9d9;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f5f3f3;
-  --color-surface-container: #efeded;
-  --color-surface-container-high: #eae8e7;
-  --color-surface-container-highest: #e4e2e2;
-  --color-on-surface: #1b1c1c;
-  --color-on-surface-variant: #4d4635;
-  --color-outline: #7f7663;
-  --color-outline-variant: #d0c5af;
-  --color-background: #fbf9f8;
-  --color-on-background: #1b1c1c;
-  --color-error: #ba1a1a;
   
-  /* Fonts */
-  --font-headline: 'Noto Serif', serif;
-  --font-body: 'Manrope', sans-serif;
-  --font-label: 'Manrope', sans-serif;
+  --color-surface: #ffffff;
+  --color-surface-container: #f8f9fa;
+  --color-surface-container-high: #f1f3f5;
   
-  /* Radii */
-  --radius-xs: 0.5rem;
-  --radius-sm: 1rem;
-  --radius-md: 1.5rem;
-  --radius-lg: 2rem;
-  --radius-xl: 3rem;
+  --color-outline: #dee2e6;
+  --color-outline-variant: #e9ecef;
+  
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
 }
 
-/* Base styles */
-html {
+/* Global Reset & Base */
+body {
+  @apply bg-white text-zinc-900 antialiased font-body;
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'Manrope', sans-serif;
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, .font-serif {
-  font-family: 'Noto Serif', serif;
-}
-
-.italic {
-  font-style: italic;
+h1, h2, h3, h4 {
+  @apply font-headline font-bold tracking-tight text-zinc-900;
 }
 
 /* Material Symbols Utility */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined' !important;
-  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   display: inline-block;
   line-height: 1;
+  vertical-align: middle;
 }
 
-/* Glassmorphism from Stitch */
+/* Layout Utilities */
+.section-container {
+  @apply max-w-7xl mx-auto px-6 md:px-12 py-20;
+}
+
+.button-primary {
+  @apply bg-primary hover:bg-zinc-800 text-white px-8 py-3 rounded-full font-bold transition-all duration-300 active:scale-95 shadow-lg shadow-primary/10 flex items-center justify-center gap-2;
+}
+
+.button-secondary {
+  @apply border border-outline hover:border-primary hover:text-primary px-8 py-3 rounded-full font-bold transition-all duration-300 active:scale-95 flex items-center justify-center gap-2;
+}
+
+/* Card Style */
+.card-professional {
+  @apply bg-white border border-outline-variant rounded-xl p-8 transition-all duration-300 hover:shadow-xl hover:shadow-zinc-200 hover:-translate-y-1;
+}
+
+/* Glassmorphism Navigation */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.hero-glow {
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-}
-
-/* Utilities for "The Luxury of Space" */
-.section-padding {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-.airy-gap {
-  gap: 6rem;
+  @apply bg-white/80 backdrop-blur-md border-b border-outline-variant/50;
 }
 
 /* Animations */
-@keyframes fade-in {
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scale-up {
-  from { opacity: 0.95; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
+  animation: fadeIn 0.8s ease-out forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-scale-up {
-  animation: scale-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary-container);
-  border-radius: 10px;
+  animation: slideUp 0.8s ease-out forwards;
 }

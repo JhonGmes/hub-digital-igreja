@@ -1,40 +1,64 @@
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+import { Link } from 'react-router-dom';
 
+export default function Footer() {
   return (
-    <footer className="w-full pt-32 pb-16 bg-surface dark:bg-zinc-950 flex flex-col items-center text-center px-8 border-t border-surface-container">
-      <div className="text-3xl font-serif italic text-zinc-800 dark:text-zinc-100 mb-8">
-        Sacred Editorial
+    <footer className="bg-zinc-50 border-t border-zinc-200 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        {/* Brand */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center text-white">
+              <span className="material-symbols-outlined text-sm">church</span>
+            </div>
+            <span className="text-lg font-bold">Hub Digital</span>
+          </div>
+          <p className="text-zinc-500 text-sm leading-relaxed">
+            Nossa missão é aproximar a comunidade através da tecnologia, provendo um acesso simples e moderno à vida da igreja.
+          </p>
+        </div>
+
+        {/* Links */}
+        <div className="space-y-6">
+          <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400">Navegação</h4>
+          <ul className="space-y-4">
+            <li><Link to="/" className="text-zinc-600 hover:text-primary transition-colors">Início</Link></li>
+            <li><Link to="/oferta" className="text-zinc-600 hover:text-primary transition-colors">Ofertas</Link></li>
+            <li><Link to="/programacao" className="text-zinc-600 hover:text-primary transition-colors">Programação</Link></li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div className="space-y-6">
+          <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400">Contato</h4>
+          <ul className="space-y-4 text-zinc-600 text-sm">
+            <li className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-zinc-400">location_on</span>
+              Av. Central, 1000 - Centro
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-zinc-400">mail</span>
+              contato@hubdigital.com.br
+            </li>
+          </ul>
+        </div>
+
+        {/* Social */}
+        <div className="space-y-6">
+          <h4 className="text-xs font-bold uppercase tracking-widest text-zinc-400">Redes Sociais</h4>
+          <div className="flex gap-4">
+            {['facebook', 'instagram', 'youtube'].map(social => (
+              <button key={social} className="w-10 h-10 rounded-full bg-white border border-zinc-200 flex items-center justify-center text-zinc-600 hover:border-primary hover:text-primary transition-all">
+                <span className="material-symbols-outlined">public</span>
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
       
-      <div className="flex flex-wrap justify-center gap-12 mb-16">
-        {['Privacidade', 'Termos', 'Contato', 'Estética'].map((item) => (
-          <a
-            key={item}
-            href="#"
-            className="font-label text-sm tracking-widest uppercase text-zinc-400 hover:text-primary underline-offset-8 hover:underline transition-all duration-300"
-          >
-            {item}
-          </a>
-        ))}
-      </div>
-
-      <div className="w-full max-w-screen-xl border-t border-outline-variant/10 pt-16 mt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="font-label text-xs tracking-widest uppercase text-zinc-400">
-          © {currentYear} Sacred Editorial Hub • ✨
-        </div>
-        
-        <div className="flex gap-8">
-          <span className="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors duration-300">
-            brand_awareness
-          </span>
-          <span className="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors duration-300">
-            nest_eco_leaf
-          </span>
-          <span className="material-symbols-outlined text-outline hover:text-primary cursor-pointer transition-colors duration-300">
-            church
-          </span>
-        </div>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10 border-t border-zinc-200 text-center">
+        <p className="text-zinc-400 text-xs uppercase tracking-widest font-bold">
+          © {new Date().getFullYear()} Hub Digital da Igreja. Todos os direitos reservados.
+        </p>
       </div>
     </footer>
   );
