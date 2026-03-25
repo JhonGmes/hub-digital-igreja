@@ -22,7 +22,12 @@ export default function Programacao() {
 
   useEffect(() => {
     getProgramacao().then(data => {
-      setSchedule(data);
+      // Transform array [{dia, eventos}] into object {dia: eventos}
+      const grouped = data.reduce((acc, curr) => {
+        acc[curr.dia] = curr.eventos;
+        return acc;
+      }, {});
+      setSchedule(grouped);
       setLoading(false);
     });
   }, []);
@@ -81,9 +86,9 @@ export default function Programacao() {
                         <span className={`font-label text-xs font-bold tracking-widest ${idx === 0 ? 'text-primary-container' : 'text-secondary'}`}>
                           {event.horario}
                         </span>
-                        <h3 className="font-headline text-2xl text-on-surface">{event.evento}</h3>
+                        <h3 className="font-headline text-2xl text-on-surface">{event.titulo}</h3>
                         <p className="text-secondary font-light">
-                          Prática contemplativa dedicada ao {event.evento.toLowerCase()} e conexão comunitária.
+                          Prática contemplativa dedicada ao {event.titulo?.toLowerCase() || 'evento'} e conexão comunitária.
                         </p>
                         <div className="flex items-center justify-center md:justify-start gap-4 pt-4 text-xs text-outline uppercase tracking-widest">
                           <span className="flex items-center gap-2">

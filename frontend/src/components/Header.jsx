@@ -8,7 +8,8 @@ export default function Header() {
   const navLinks = [
     { path: '/', label: 'ENSAIOS' },
     { path: '/oferta', label: 'OFERTAS' },
-    { path: '/programacao', label: 'MEDITAÇÕES' }, // Mapping 'Programação' to 'Meditações' as per Stitch UI
+    { path: '/programacao', label: 'MEDITAÇÕES' },
+    { path: '/configuracao', label: 'CONFIGURAÇÕES' },
   ];
 
   return (
